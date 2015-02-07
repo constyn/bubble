@@ -1,5 +1,6 @@
 package components
 {
+	import components.menu.ToolTip;
 	import utils.Draw;
 	import utils.TextUtil;
 	import flash.events.Event;

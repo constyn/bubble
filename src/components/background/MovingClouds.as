@@ -10,7 +10,7 @@ http://www.flashandmath.com/intermediate/cloudsfast/
 */
 
 
-package components
+package components.background
 {
 	import components.World;
 	import config.Config;

@@ -1,5 +1,8 @@
-package components
+package components.menu
 {
+	import components.cell.Body;
+	import components.Enemy;
+	import components.Weapon;
 	import flash.display.Graphics;
 	import specials.anim.AnimFactory;
 	import specials.anim.Animation;

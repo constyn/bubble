@@ -2,7 +2,7 @@ package view
 {
 	import com.greensock.easing.Linear;
 	import com.greensock.TweenMax;
-	import components.Background;
+	import components.background.Background;
 	import components.Lander;
 	import config.Config;
 	import events.ViewEvent;

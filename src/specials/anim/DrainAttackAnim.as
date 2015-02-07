@@ -5,7 +5,7 @@ package specials.anim
 	import config.Config;
 	import events.GameEvent;
 	import events.SoundEvent;
-	import components.Cell;
+	import components.cell.Cell;
 	import model.CellVO;
 	import com.greensock.TweenMax;
 	import flash.display.Sprite;

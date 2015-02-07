@@ -3,7 +3,7 @@ package view
 	import com.greensock.easing.Linear;
 	import com.greensock.TweenMax;
 	import components.Anim;
-	import components.Background;
+	import components.background.Background;
 	import components.Lander;
 	import components.Platform;
 	import config.Config;

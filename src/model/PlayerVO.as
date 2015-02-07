@@ -7,7 +7,7 @@ package model
         public var decc:Number;
 	    public var terminalV:Number;
 	    public var speed:Number;
-	    public var xp:Number = 0;
+	    public var xp:Number = 1000;
 		public var nextXPStep:Number = 100;
 		public var pos:Point;
 	}		

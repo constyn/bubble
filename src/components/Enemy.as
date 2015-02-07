@@ -1,5 +1,7 @@
 package components
 {
+	import components.cell.Body;
+	import components.cell.Cell;
 	import flash.events.Event;
 	import model.*;
 	import com.greensock.TweenMax;	

@@ -3,7 +3,7 @@ package specials.anim
 	import config.Config;
 	import events.SoundEvent;
 	import com.greensock.easing.Quad;
-	import components.Cell;
+	import components.cell.Cell;
 	import model.CellVO;
 	import com.greensock.TweenMax;
 	import flash.display.Sprite;

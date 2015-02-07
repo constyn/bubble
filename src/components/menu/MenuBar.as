@@ -1,4 +1,4 @@
-package components
+package components.menu
 {
 	import utils.Draw;
 	import utils.GameButton;

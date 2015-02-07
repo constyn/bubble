@@ -1,5 +1,6 @@
-package components
+package components.background
 {
+	import components.cell.Cell;
 	import components.World;
 	import flash.utils.getTimer;
 	import model.GameModel;
@@ -95,39 +96,7 @@ package components
 					 	cell.y > Config.HEIGHT * 2 || cell.y < -Config.HEIGHT)
 					 	reposCell(cell);
                 }   
-				/*
-				for(k = 0; k < waves.length; k++)
-                {
-					var newWave:Sprite = waves[k];
-					newWave.scaleX += .1;
-					newWave.scaleY += .1;
-					newWave.alpha -= .01;
-                  
-					if(newWave.scaleX <= 0)
-					{
-						if(newWave && contains(newWave))
-							removeChild(newWave)
-						waves.splice(k, 1);
-						k--;
-					}
-                }   
-                 * 
-                 */
-				         
             }
-			
-			/*if(getTimer() - lastWaveTime > 200 && (lastUserPos.x != _model.player.pos.x || lastUserPos.y != _model.player.pos.y))
-			{
-				lastWaveTime = getTimer();
-				var wave:Sprite = new Sprite();
-				wave.graphics.lineStyle(.1, 0xffffff, .3);
-				wave.graphics.drawCircle(0,0, Math.random() * 2 + 2);
-				wave.x = _model.player.pos.x;
-				wave.y = _model.player.pos.y;
-				lastUserPos = new Point(_model.player.pos.x, _model.player.pos.y)
-				addChild(wave)
-				waves.push(wave);
-			}*/
 		}
 		
 		private function reposCell(cell:Cell):void

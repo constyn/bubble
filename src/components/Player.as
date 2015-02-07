@@ -1,5 +1,7 @@
 package components
 {
+	import components.cell.Body;
+	import components.cell.Cell;
 	import events.SoundEvent;
 	import flash.events.Event;	
 	import flash.events.KeyboardEvent;

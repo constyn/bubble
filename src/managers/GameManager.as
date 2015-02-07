@@ -1,7 +1,7 @@
 package managers
 {
-	import components.Radar;
-	import components.Body;
+	import components.menu.Radar;
+	import components.cell.Body;
 	import events.MessageEvent;
 	import flash.geom.Point;
 	import config.Config;
@@ -15,8 +15,8 @@ package managers
 	import flash.events.MouseEvent;
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
-	import components.MenuBar;
-	import components.Background;
+	import components.menu.MenuBar;
+	import components.background.Background;
 	import components.World;
 	import components.Player;
 	import model.GameModel;

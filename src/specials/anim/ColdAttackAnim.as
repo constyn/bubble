@@ -1,6 +1,5 @@
 package specials.anim 
 {
-	import components.Body;
 	import events.SoundEvent;
 	import com.greensock.easing.Quad;
 	import com.greensock.TweenMax;

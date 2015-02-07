@@ -1,6 +1,6 @@
 package view
 {
-	import components.Background;
+	import components.background.Background;
 	import events.ViewEvent;
 	import flash.filters.GlowFilter;
 	import utils.TextUtil;

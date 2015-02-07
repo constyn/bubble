@@ -1,4 +1,4 @@
-package components
+package components.menu
 {
 	import flash.events.Event;
 	import config.Config;

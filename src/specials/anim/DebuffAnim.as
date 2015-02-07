@@ -2,7 +2,7 @@ package specials.anim
 {
 	import config.Config;
 	import model.CellVO;
-	import components.Cell;
+	import components.cell.Cell;
 	import com.greensock.easing.Quad;
 	import events.GameEvent;
 	import events.SoundEvent;

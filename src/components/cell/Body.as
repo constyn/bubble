@@ -1,4 +1,4 @@
-package components
+package components.cell
 {
 	import config.Config;
 	import com.greensock.TweenMax;

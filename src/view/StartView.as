@@ -10,7 +10,7 @@ package view
 	import flash.events.Event;
 	import utils.MenuButton;
 	import flash.display.Sprite;
-    import components.Background;
+    import components.background.Background;
 	
 	public class StartView extends View 
 	{		

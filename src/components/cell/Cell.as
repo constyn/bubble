@@ -1,4 +1,4 @@
-package components
+package components.cell
 {
 	import flash.display.Sprite;
 	import flash.events.Event;
@@ -38,18 +38,18 @@ package components
 			
 			graphics.clear();
 			graphics.lineStyle(_cellVO.lineThickness, 0xffffff, .1)
-			graphics.beginGradientFill(flash.display.GradientType.RADIAL, [color,color], [.2,.4], [0x00,0xff], pMatrix);
+			graphics.beginGradientFill(flash.display.GradientType.RADIAL, [color,color], [.7,.5], [0x00,0xff], pMatrix);
 			graphics.drawCircle(0,0, radius);
 			graphics.endFill();
 			
 			graphics.lineStyle(0, color, .2)
 			pMatrix.createGradientBox(2*radius/3, 2*radius/3, 0, -radius/3-(radius/3)-(radius/3)/10, -radius/3-(radius/3)-(radius/3)/10);			
-			graphics.beginGradientFill(flash.display.GradientType.RADIAL, [0xffffff,0xffffff], [opacity/3,0], [0x00,0xff], pMatrix);
+			graphics.beginGradientFill(flash.display.GradientType.RADIAL, [0xffffff,0xffffff], [.2,0], [0x00,0xff], pMatrix);
 			graphics.drawCircle(-radius/3, -radius/3, radius/3);
 			graphics.endFill();
 			
 			pMatrix.createGradientBox(2*radius/10, 2*radius/10, 0,radius/3-(radius/10)-(radius/10)/10, radius/3-(radius/10)-(radius/10)/10);			
-			graphics.beginGradientFill(flash.display.GradientType.RADIAL, [0xffffff,0xffffff], [0.2,0], [0x00,0xff], pMatrix);
+			graphics.beginGradientFill(flash.display.GradientType.RADIAL, [0xffffff,0xffffff], [.2,0], [0x00,0xff], pMatrix);
 			graphics.drawCircle(radius/3, radius/3, radius/10);
 			graphics.endFill();
 		}

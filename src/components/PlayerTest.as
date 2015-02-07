@@ -1,6 +1,7 @@
 package components
 {
 	import com.greensock.easing.Linear;
+	import components.cell.Body;
 	import flash.filters.BlurFilter;
 	import managers.EvolutionEngine;
 	import model.PlayerVO;

@@ -1,6 +1,6 @@
 package view
 {
-	import components.Background;
+	import components.background.Background;
 	import events.ViewEvent;
 	import utils.TextUtil;
 	import utils.GameButton;

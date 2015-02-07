@@ -1,5 +1,7 @@
-package components 
+package components.menu 
 {
+	import components.Player;
+	import components.World;
 	import config.Config;
 	import flash.events.Event;
 	import flash.geom.Matrix;

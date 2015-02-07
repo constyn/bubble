@@ -1,5 +1,6 @@
-package components
+package components.menu
 {
+	import components.Weapon;
 	import flash.display.Sprite;
 	import flash.display.DisplayObject;
 	import flash.events.*;

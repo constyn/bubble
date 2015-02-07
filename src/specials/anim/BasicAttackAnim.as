@@ -1,7 +1,7 @@
 package specials.anim 
 {
 	import com.greensock.easing.Linear;
-	import components.Cell;
+	import components.cell.Cell;
 	import config.Config;
 	import model.CellVO;
 	import com.greensock.TweenMax;

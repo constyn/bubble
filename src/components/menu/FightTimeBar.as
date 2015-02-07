@@ -1,4 +1,4 @@
-package components
+package components.menu
 {
 	import config.Config;
 	import flash.display.Sprite;

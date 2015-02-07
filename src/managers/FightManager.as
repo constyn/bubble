@@ -6,7 +6,7 @@ package managers
 	import flash.events.MouseEvent;
 	import components.Enemy;
 	import components.Player;
-	import components.FightScreen;
+	import components.menu.FightScreen;
 	import model.GameModel;
 	import flash.events.EventDispatcher;
 	
