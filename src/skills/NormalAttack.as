@@ -16,10 +16,23 @@ package skills {
 			
 		}
 		
-		public function applySkill(e1:EntityVO, e2:EntityVO, weaponVO:WeaponVO):void
+		public function applySkill(attacker:EntityVO, target:EntityVO):void
 		{
-			e1.currentHealth = Math.round(Math.min(e1.totalHealth, Math.max(0, e1.currentHealth)))
-			e2.currentHealth = Math.round(Math.min(e2.totalHealth, Math.max(0, e2.currentHealth)))
+			if (skillVO.doesDamage)
+			{
+				target.currentHealth -= skillVO.damage;
+				target.currentHealth = getCorrectedValue(target); 
+			}
+			if (skillVO.lifeRecovery)
+			{
+				attacker.currentHealth += skillVO.heal;
+				attacker.currentHealth = getCorrectedValue(attacker); 
+			}
+		}
+		
+		private function getCorrectedValue(e:EntityVO):int 
+		{
+			return Math.round(Math.min(e.totalHealth, Math.max(0, e.currentHealth)));
 		}
 		
 		public function toString():String
