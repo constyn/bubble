@@ -12,5 +12,8 @@ package config
 		public static const C4:uint = 0xCDDC39;  //0xccff00; greenish yellow
 		public static const C5:uint = 0x00BCD4;  //0x00ffcc; greennish blue
 		public static const C6:uint = 0x03A9F4;	 //0x00ccff; light blue
+		
+		public static const CELL_OPACITY:Number = .7;	
+		public static const CELL_BORDER_OPACITY:Number	= .2;	
 	}   
 }       

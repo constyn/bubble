@@ -1,6 +1,6 @@
 package managers
 {
-	import components.menu.Radar;
+	import components.ui.Radar;
 	import components.cell.Body;
 	import events.MessageEvent;
 	import flash.geom.Point;
@@ -10,12 +10,12 @@ package managers
 	import events.GameEvent;
 	import events.SoundEvent;
 	import utils.Collisions;
-	import components.Nutrient;
+	import components.pickups.Nutrient;
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
-	import components.menu.MenuBar;
+	import components.ui.MenuBar;
 	import components.background.Background;
 	import components.World;
 	import components.Player;
@@ -72,7 +72,6 @@ package managers
                     var nutri:Nutrient = Nutrient(obj)
                     if(Collisions.checkCollision(player, nutri))
                     {
-                        //_model.player.xp += nutri.nutriVO.energy * int(Math.random() * _model.player.level + 10);
 						_model.player.currentHealth = Math.min(_model.player.currentHealth + nutri.nutriVO.energy * int(Math.random() * _model.player.level + 1), _model.player.totalHealth);
                         dispatchEvent(new SoundEvent(SoundEvent.PLAY_SOUND, {sound:"pickUp"}, true));                         
                         

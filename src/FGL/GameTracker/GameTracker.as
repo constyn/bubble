@@ -36,7 +36,7 @@ package FGL.GameTracker
 	 * 		<li>Call <code>GameTracker.api.checkpoint()</code> if you want to note that a user has gotten to a checkpoint in the 
 	 * 			current level</li>
 	 * 		<li>Call <code>GameTracker.api.alert()</code> to report something important, such as "Player beat the game!" or 
-	 * 			"Player read the instructions!" These alerts are shown specially on the report page,
+	 * 			"Player read the instructions!" These alerts are shown skillly on the report page,
 	 *          so you can tell at a glance what the gamer accomplished.</li>
 	 * 		<li>Call <code>GameTracker.api.customMsg()</code> to report anything else that might be interesting. For instance, 
 	 *          you might use custom messages named "GUI" to report when the user clicks on GUI elements.
@@ -70,7 +70,7 @@ package FGL.GameTracker
 	 *  it includes a custom message. Those messages always start with "AUTO:".)</p>
 	 * 
 	 *  <p><strong>Catching errors:</strong> you can call addEventListener to listen to GAMETRACKER_SERVER_ERROR and
-	 *  GAMETRACKER_CODING_ERROR events. This is especially useful during development and testing!</p>
+	 *  GAMETRACKER_CODING_ERROR events. This is eskillly useful during development and testing!</p>
 	 *
 	 * <p><strong>It's Auto-Disabled:</strong> GameTracker will automatically detect if it's on FGL's website, and if not,
 	 *  it will turn itself off. This way you never need to worry about whether it's on or off -- just call the functions. 

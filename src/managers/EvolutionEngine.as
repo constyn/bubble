@@ -1,7 +1,7 @@
 package managers
 {
 	import config.Config;
-    import specials.*
+    import skills.*
     import flash.display.Sprite;
     import genetic.Generator;
     import model.*
@@ -184,19 +184,19 @@ package managers
 	     
 	        if(index != 0)
 			{					
-				var specialArr:Array = SPECIALS[weaponVO.tier];
-				var special:BaseSpecial = new specialArr[int(specialArr.length * Math.random())](entity.level, weaponVO.tier);
-	        	weaponVO.special = special;
+				var skillArr:Array = SPECIALS[weaponVO.tier];
+				var skill:BaseAttack = new skillArr[int(skillArr.length * Math.random())](entity.level, weaponVO.tier);
+	        	weaponVO.skill = skill;
 			}
 			
-			if(!weaponVO.special || weaponVO.special.specialVO.doesDamage)
+			if(!weaponVO.skill || weaponVO.skill.skillVO.doesDamage)
 			{	
 								
-				if(weaponVO.special)	
+				if(weaponVO.skill)	
 				{
 					weaponVO.name = weaponFirstName[int(weaponFirstName.length * Math.random())] + " " +
 									weaponSecondName[int(weaponSecondName.length * Math.random())] + " " +
-									weaponVO.special.specialVO.name;
+									weaponVO.skill.skillVO.name;
 				}
 				else
 				{
@@ -208,7 +208,7 @@ package managers
 			}
 			else
 			{				
-				weaponVO.name = weaponVO.special.specialVO.name;
+				weaponVO.name = weaponVO.skill.skillVO.name;
 			}
 				
 			var weapon:Weapon = new Weapon(weaponVO);

@@ -1,9 +1,9 @@
 package 
 {
 	import components.background.Background;
-	import components.menu.FightScreen;
-	import components.menu.MenuBar;
-	import components.menu.Radar;
+	import components.fight.FightScreen;
+	import components.ui.MenuBar;
+	import components.ui.Radar;
 	import events.MessageEvent;
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;

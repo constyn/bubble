@@ -11,7 +11,7 @@ package genetic
 		private var conditions:Array = ["<", ">", "=", "!"];
 		private var operations:Array = ["/", "*", "-", "+"];
 		private var actions:Array    = [];
-		private var variables:Array  = ["special","elife", "mlife"];
+		private var variables:Array  = ["skill","elife", "mlife"];
 		private var condVar:Array;		
 		private var roulette:Roulette;
 		

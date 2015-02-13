@@ -88,7 +88,7 @@ package components
 		            _enemyVO.weapons.push(weapon);
 		            
 		            //if(i != 0)
-		            //    weaponVO.special = Weapon.SPECIALS[(int(Math.random()*Weapon.SPECIALS.length))]
+		            //    weaponVO.skill = Weapon.SPECIALS[(int(Math.random()*Weapon.SPECIALS.length))]
 		        }
 		    }
 		} 	

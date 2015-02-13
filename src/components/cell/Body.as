@@ -52,7 +52,7 @@ package components.cell
             {
 				backSprite.addChild(createCell(cellVO))
             }
-			bgBmpd = new BitmapData(Math.max(1,backSprite.width), Math.max(1, backSprite.height), true, 0x000000) ;
+			bgBmpd = new BitmapData(Math.max(1,backSprite.width+1), Math.max(1, backSprite.height+1), true, 0x000000) ;
 			
 			if(!bgBitmap)
             	bgBitmap = new Bitmap(bgBmpd, PixelSnapping.AUTO, true);    

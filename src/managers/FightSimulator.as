@@ -1,7 +1,7 @@
 package managers 
 {
-	import specials.buffs.ABuff;
-	import specials.BaseSpecial;
+	import skills.buffs.ABuff;
+	import skills.BaseAttack;
 	import model.SpecialVO;
 	import components.Weapon;
 	import model.WeaponVO;
@@ -75,8 +75,8 @@ package managers
 		
 		public function attack(e1:EntityVO, e2:EntityVO, weaponVO:WeaponVO):void
 		{
-			if(weaponVO.special)
-				weaponVO.special.applySpecial(e1, e2, weaponVO);
+			if(weaponVO.skill)
+				weaponVO.skill.applySkill(e1, e2, weaponVO);
 			else	     
 	        	e1.currentHealth = Math.max(e1.currentHealth - (weaponVO.attack * e1.weakEffect), 0); 	        
 		}

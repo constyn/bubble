@@ -6,7 +6,7 @@ package managers
 	import flash.events.MouseEvent;
 	import components.Enemy;
 	import components.Player;
-	import components.menu.FightScreen;
+	import components.fight.FightScreen;
 	import model.GameModel;
 	import flash.events.EventDispatcher;
 	
@@ -65,8 +65,8 @@ package managers
 		    
 			fightSim.attack(enemy.enemyVO, _model.player, selectedWeapon.weaponVO);	    
 		   
-		   	if(selectedWeapon.weaponVO.special)
-	        	selectedWeapon.weaponVO.coolDown = selectedWeapon.weaponVO.special.specialVO.coolDown + 1;	   
+		   	if(selectedWeapon.weaponVO.skill)
+	        	selectedWeapon.weaponVO.coolDown = selectedWeapon.weaponVO.skill.skillVO.coolDown + 1;	   
 		         
 		    fightScreen.playAttackAnimation("enemy", Weapon(event.currentTarget)) 
 		    
@@ -92,8 +92,8 @@ package managers
 	         	      
 	        fightScreen.playAttackAnimation("player", randWeapon)	        
 	          
-			if(randWeapon.weaponVO.special)
-	        	randWeapon.weaponVO.coolDown = randWeapon.weaponVO.special.specialVO.coolDown + 1;	    
+			if(randWeapon.weaponVO.skill)
+	        	randWeapon.weaponVO.coolDown = randWeapon.weaponVO.skill.skillVO.coolDown + 1;	    
 			
 	        for each(var weapon:Weapon in enemy.enemyVO.weapons)
 	                if(weapon.weaponVO.coolDown != 0)

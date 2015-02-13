@@ -1,10 +1,10 @@
 package components
 {
-	import components.menu.ToolTip;
+	import components.ui.ToolTip;
 	import utils.Draw;
 	import utils.TextUtil;
 	import flash.events.Event;
-	import specials.BaseSpecial;
+	import skills.BaseAttack;
 	import flash.events.MouseEvent;
 	import flash.display.Sprite;
 	import flash.text.*;
@@ -61,13 +61,13 @@ package components
 		    
 			
 			toolTipText =  "Attack: " +  TextUtil.setHTMLColor(String(_weaponVO.attack), Config.C2) + "\n";
-			if(_weaponVO.special)
+			if(_weaponVO.skill)
 			{			
-				if(!_weaponVO.special.specialVO.doesDamage)
+				if(!_weaponVO.skill.skillVO.doesDamage)
 					toolTipText = "";
-			    toolTipText += _weaponVO.special.toString();	
+			    toolTipText += _weaponVO.skill.toString();	
 				
-				var turnText:String = weaponVO.special.specialVO.coolDown +  " turn" + (_weaponVO.special.specialVO.coolDown == 1? "":"s");
+				var turnText:String = weaponVO.skill.skillVO.coolDown +  " turn" + (_weaponVO.skill.skillVO.coolDown == 1? "":"s");
 				toolTipText += "\n" + "Cooldown: " + TextUtil.setHTMLColor(turnText, Config.C4) 							  
 			}
 			
