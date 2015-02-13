@@ -1,6 +1,6 @@
 package managers
 {
-	import model.SpecialVO;
+	import model.SkillVO;
 	import events.GameEvent;
 	import components.Weapon;
 	import flash.events.MouseEvent;
@@ -63,10 +63,10 @@ package managers
 			
 		    _model.player.fightBarLoaded -= (selectedWeapon.weaponVO.tier + 1) * 33;
 		    
-			fightSim.attack(enemy.enemyVO, _model.player, selectedWeapon.weaponVO);	    
+			FightSimulator.attack(enemy.enemyVO, _model.player, selectedWeapon.weaponVO);	    
 		   
 		   	if(selectedWeapon.weaponVO.skill)
-	        	selectedWeapon.weaponVO.coolDown = selectedWeapon.weaponVO.skill.skillVO.coolDown + 1;	   
+	        	selectedWeapon.weaponVO.coolDown = selectedWeapon.weaponVO.coolDown + 1;	   
 		         
 		    fightScreen.playAttackAnimation("enemy", Weapon(event.currentTarget)) 
 		    
@@ -86,14 +86,14 @@ package managers
 	        while(randWeapon.weaponVO.coolDown > 0 || !randWeapon.enabled)
 	            randWeapon = fightScreen.enemyAttacks[int(fightScreen.enemyAttacks.length * Math.random())]
 	        
-			fightSim.attack(_model.player, enemy.enemyVO, randWeapon.weaponVO);
+			FightSimulator.attack(_model.player, enemy.enemyVO, randWeapon.weaponVO);
 			
 	        enemy.enemyVO.fightBarLoaded -= (randWeapon.weaponVO.tier + 1) * 33;    
 	         	      
 	        fightScreen.playAttackAnimation("player", randWeapon)	        
 	          
 			if(randWeapon.weaponVO.skill)
-	        	randWeapon.weaponVO.coolDown = randWeapon.weaponVO.skill.skillVO.coolDown + 1;	    
+	        	randWeapon.weaponVO.coolDown = randWeapon.weaponVO.coolDown + 1;	    
 			
 	        for each(var weapon:Weapon in enemy.enemyVO.weapons)
 	                if(weapon.weaponVO.coolDown != 0)

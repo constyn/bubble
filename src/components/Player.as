@@ -258,7 +258,7 @@ package components
 	        {	            				
 	            var weapon:Weapon = evoEngine.getSutableWeapon(_vo, i)
 				if(i == 0)
-					weapon.weaponVO.attack = 20;
+					weapon.weaponVO.damage = 20;
 					
 	            _vo.weapons.push(weapon);
 	        }

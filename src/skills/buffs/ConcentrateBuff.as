@@ -7,19 +7,19 @@ package skills.buffs {
 	public class ConcentrateBuff extends ABuff
 	{
 		
-		public function ConcentrateBuff(ent:EntityVO, amount:Number) 
+		public function ConcentrateBuff(amount:Number) 
 		{
-			super(ent, amount);			
+			//super(ent, amount);			
 		}
 		
 		override protected function addEffect():void
 		{
-			enetity.attackEffect = amount;
+			//enetity.attackEffect = amount;
 		}
 		
 		override protected function removeffect():void
 		{
-			enetity.attackEffect = 1;
+			//enetity.attackEffect = 1;
 		}
 	}
 }

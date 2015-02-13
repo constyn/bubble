@@ -1,17 +1,17 @@
 package skills {
 	import config.Config;
-	import model.SpecialVO;
+	import model.SkillVO;
 	import model.EntityVO;
 	import model.WeaponVO;
 	/**
 	 * @author taires
 	 */
-	public class BaseAttack 
+	public class NormalAttack 
 	{
-		public var skillVO:SpecialVO;
+		public var skillVO:SkillVO;
 		public var skillAmountColor:uint = Config.C5;
 		
-		public function BaseAttack(level:int, tier:int)
+		public function NormalAttack(level:int, tier:int)
 		{
 			
 		}

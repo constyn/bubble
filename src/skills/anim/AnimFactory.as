@@ -1,6 +1,6 @@
 package skills.anim {
 	import skills.Debuff;
-	import skills.BaseAttack
+	import skills.NormalAttack
 	import skills.Concentrate;
 	import skills.Cold;
 	import skills.Power;
@@ -8,13 +8,13 @@ package skills.anim {
 	import skills.Heal;
 	import skills.Drain;
 	import flash.display.Sprite;
-	import skills.BaseAttack;
+	import skills.NormalAttack;
 	/**
 	 * @author taires
 	 */
 	public class AnimFactory 
 	{		
-		public static function getAnimation(skill:BaseAttack, start:Sprite, end:Sprite):Animation
+		public static function getAnimation(skill:NormalAttack, start:Sprite, end:Sprite):Animation
 		{
 			if(skill is Drain)
 				return new DrainAttackAnim(start, end);

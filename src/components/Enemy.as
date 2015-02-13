@@ -83,7 +83,7 @@ package components
 		        for(var i:int = 0; i < 3; i++)
 		        {
 		            var weaponVO:WeaponVO = new WeaponVO();
-		            weaponVO.attack = int(Math.random()*_enemyVO.level * 3) + 10;
+		            weaponVO.damage = int(Math.random()*_enemyVO.level * 3) + 10;
 		            var weapon:Weapon = new Weapon(weaponVO)
 		            _enemyVO.weapons.push(weapon);
 		            

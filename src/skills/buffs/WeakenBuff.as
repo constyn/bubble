@@ -6,19 +6,19 @@ package skills.buffs {
 	 */
 	public class WeakenBuff extends ABuff
 	{
-		public function WeakenBuff(ent:EntityVO, amount:Number) 
+		public function WeakenBuff(amount:Number) 
 		{
-			super(ent, amount);			
+			//super(ent, amount);			
 		}
 		
 		override protected function addEffect():void
 		{
-			enetity.weakEffect = amount;
+			//enetity.weakEffect = amount;
 		}
 		
 		override protected function removeffect():void
 		{
-			enetity.weakEffect = 1;
+			//enetity.weakEffect = 1;
 		}
 	}
 }

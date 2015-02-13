@@ -180,12 +180,12 @@ package managers
 			var weaponLevels:Array = [1, 2.5, 4];
 			var weaponVO:WeaponVO = new WeaponVO();
 			weaponVO.tier = index % 3;				
-            weaponVO.attack = int(((Math.random() * (entity.level * 2) + 10) + 1) * weaponLevels[weaponVO.tier]);
+            weaponVO.damage = int(((Math.random() * (entity.level * 2) + 10) + 1) * weaponLevels[weaponVO.tier]);
 	     
 	        if(index != 0)
 			{					
 				var skillArr:Array = SPECIALS[weaponVO.tier];
-				var skill:BaseAttack = new skillArr[int(skillArr.length * Math.random())](entity.level, weaponVO.tier);
+				var skill:NormalAttack = new skillArr[int(skillArr.length * Math.random())](entity.level, weaponVO.tier);
 	        	weaponVO.skill = skill;
 			}
 			

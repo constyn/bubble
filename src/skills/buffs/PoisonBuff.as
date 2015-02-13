@@ -8,9 +8,9 @@ package skills.buffs {
 	{
 		private var healthPerTick:int;
 		
-		public function PoisonBuff(ent:EntityVO, amount:Number) 
+		public function PoisonBuff(amount:Number) 
 		{
-			super(ent, amount);			
+			super(amount);			
 		}
 		
 		override public function update():void

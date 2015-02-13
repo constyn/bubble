@@ -4,19 +4,19 @@ package skills.buffs {import model.EntityVO;
 	 */
 	public class SlowBuff extends ABuff 
 	{		
-		public function SlowBuff(ent:EntityVO, amount:Number) 
+		public function SlowBuff(amount:Number) 
 		{
-			super(ent, amount);
+			super(amount);
 		}
 		
 		override protected function addEffect():void
 		{
-			enetity.barLoadingEffect = .7;
+			//enetity.barLoadingEffect = .7;
 		}
 		
 		override protected function removeffect():void
 		{
-			enetity.barLoadingEffect = 1;
+			//enetity.barLoadingEffect = 1;
 		}
 	}
 }

@@ -1,27 +1,22 @@
 package skills {
 	import skills.buffs.PoisonBuff;
 	import skills.buffs.WeakenBuff;
-	import model.SpecialVO;
+	import model.SkillVO;
 	import model.WeaponVO;
 	import model.EntityVO;
 	/**
 	 * @author taires
 	 */
-	public class Debuff extends BaseAttack
+	public class Debuff extends NormalAttack
 	{
 		public function Debuff(level:int, tier:int)
 		{
 			super(level, tier);
-			skillVO = new SpecialVO();			
+			skillVO = new SkillVO();			
 			skillVO.doesDamage = false;
-			skillVO.coolDown = int(Math.random() * 3 + 2)
-			skillVO.amount = int(Math.random() * level + 1);
+			//skillVO.coolDown = int(Math.random() * 3 + 2)
+			//skillVO.amount = int(Math.random() * level + 1);
 			skillVO.name = "Debuff";
-		}
-		
-		override public function applySkill(e1:EntityVO, e2:EntityVO, weaponVO:WeaponVO):void
-		{	
-			e2.negBuffs = [];
 		}
 		
 		override public function toString():String

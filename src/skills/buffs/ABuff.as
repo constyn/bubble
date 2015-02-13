@@ -14,9 +14,9 @@ package skills.buffs {
 		protected var enetity:EntityVO;
 		protected var amount:Number
 		
-		public function ABuff(ent:EntityVO, amount:Number)
+		public function ABuff(amount:Number)
 		{
-			enetity = ent;
+			//enetity = ent;
 			this.amount = amount
 			addEffect();
 		}

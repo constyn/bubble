@@ -1,8 +1,8 @@
 package managers 
 {
 	import skills.buffs.ABuff;
-	import skills.BaseAttack;
-	import model.SpecialVO;
+	import skills.NormalAttack;
+	import model.SkillVO;
 	import components.Weapon;
 	import model.WeaponVO;
 	import model.EntityVO;
@@ -73,12 +73,12 @@ package managers
 			}
 		}
 		
-		public function attack(e1:EntityVO, e2:EntityVO, weaponVO:WeaponVO):void
+		public static function attack(e1:EntityVO, e2:EntityVO, weaponVO:WeaponVO):void
 		{
 			if(weaponVO.skill)
 				weaponVO.skill.applySkill(e1, e2, weaponVO);
 			else	     
-	        	e1.currentHealth = Math.max(e1.currentHealth - (weaponVO.attack * e1.weakEffect), 0); 	        
+	        	e1.currentHealth = Math.max(e1.currentHealth - (weaponVO.damage * e1.weakEffect), 0); 	        
 		}
 		
 		public function updateBuffs(ent:EntityVO):void
