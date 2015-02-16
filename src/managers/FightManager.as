@@ -30,7 +30,7 @@ package managers
 			this.enemy = enemy;
 			this.fightScreen = fightScreen;
 			
-			for each(var weapon:Weapon in fightScreen.playerAttacks)
+			for each(var weapon:Weapon in _model.player.weapons)
 			{
 			    weapon.setupListeners();
 			    weapon.addEventListener(MouseEvent.CLICK, playerAttack)
@@ -76,15 +76,17 @@ package managers
                     weapon.weaponVO.coolDown -=1;
 			}
 		}
-				
+		
 		private function enemyAttack():void
-		{     
-		    if(!Weapon(fightScreen.enemyAttacks[0]).enabled || enemy.dead)
+		{     		
+			var weapons:Array = enemy.enemyVO.weapons;
+			
+		    if(!weapons[0].enabled || enemy.dead)
 		        return;
 		         
-	        var randWeapon:Weapon = fightScreen.enemyAttacks[int(fightScreen.enemyAttacks.length * Math.random())]
+	        var randWeapon:Weapon = weapons[int(weapons.length * Math.random())]
 	        while(randWeapon.weaponVO.coolDown > 0 || !randWeapon.enabled)
-	            randWeapon = fightScreen.enemyAttacks[int(fightScreen.enemyAttacks.length * Math.random())]
+	            randWeapon = weapons[int(weapons.length * Math.random())]
 	        
 			FightSimulator.attack(_model.player, enemy.enemyVO, randWeapon.weaponVO);
 			
@@ -115,9 +117,7 @@ package managers
 		{   
 		    if(enemy.dead || _model.player.dead) 
 		    {
-		        for each(weapon in fightScreen.playerAttacks)
-			        weapon.removeEventListener(MouseEvent.CLICK, playerAttack)
-			    
+				fightScreen.clean();		    
 			    return;
 			}
 			   

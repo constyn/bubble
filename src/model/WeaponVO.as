@@ -8,5 +8,6 @@ package model
 		public var coolDown:int;
         public var name:String;
 		public var damage:Number;
+		public var enabled:Boolean;
 	}		
 }

@@ -76,7 +76,7 @@ package managers
 		public static function attack(e1:EntityVO, e2:EntityVO, weaponVO:WeaponVO):void
 		{
 			if(weaponVO.skill)
-				weaponVO.skill.applySkill(e1, e2, weaponVO);
+				weaponVO.skill.applySkill(e1, e2);
 			else	     
 	        	e1.currentHealth = Math.max(e1.currentHealth - (weaponVO.damage * e1.weakEffect), 0); 	        
 		}

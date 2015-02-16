@@ -31,16 +31,17 @@ package components.fight {
 		private var bgBmpd:BitmapData;
 		private var backSprite:Sprite;
 		
-		private var playerWeaponContainer:Sprite;
-		private var enemyWeaponContainer:Sprite;
+		private var playerWeaponContainer:WeaponSection;
+		private var enemyWeaponContainer:WeaponSection;
 		
 		private var topPanel:Sprite;
 		private var bottomPanel:Sprite;
 		
 		private var fightText:TextField;
 		
-		private var playerLife:Sprite;
-		private var enemyLife:Sprite;		
+		private var playerLife:LifeBar;
+		private var enemyLife:LifeBar;
+		
 		public var playerAttacks:Array;
 		public var enemyAttacks:Array;	
 		public var playerLifeText:TextField;
@@ -49,8 +50,10 @@ package components.fight {
 		public var playerTimeBar:FightTimeBar;
 		public var enemyTimeBar:FightTimeBar;
 		
+		public var playerAvatar:Avatar;
+		public var enemyAvatar:Avatar;
 		public var playerSprite:Body;
-		public var enemySprite:Enemy;
+		public var enemySprite:Body;
 			
 		public var animationsFinished:Boolean;
 		
@@ -121,16 +124,7 @@ package components.fight {
 		}	
 		
 		private function createPlayer():void
-		{		
-			Draw.drawRoundRect(bottomPanel,5, 5, 90, 90, 5, Config.C1, .8)
-			Draw.drawRoundRect(bottomPanel,10, 10, 80, 80, 4, 0xFFFFFF, .8)
-			
-			var playerBody:Body = new Body(_model.player)
-			bottomPanel.addChild(playerBody)
-			playerBody.scaleX = playerBody.scaleY = Math.min(1, Math.min(80/playerBody.width, 80/playerBody.height))
-			playerBody.x = 50;
-			playerBody.y = 50;
-			
+		{				
 			playerSprite = new Body(_model.player)
 			addChild(playerSprite)
 			playerSprite.x = playerSprite.width / 2 + 40;
@@ -151,61 +145,27 @@ package components.fight {
 		    levelText.text = "Lvl: " + _model.player.level;
 		    bottomPanel.addChild(levelText)	
 		    
-		    playerWeaponContainer = new Sprite();
-			playerWeaponContainer.graphics.clear();
+		    playerWeaponContainer = new WeaponSection(_model.player);
+			playerWeaponContainer.clear();
+			playerWeaponContainer.x = 105;
+		    playerWeaponContainer.y = 5;
+			bottomPanel.addChild(playerWeaponContainer)	    	
 			
-			Draw.drawRoundRect(playerWeaponContainer, 0, 0, Config.WIDTH - 110, 70, 5, Config.C1, .8)			
-			Draw.drawRoundRect(playerWeaponContainer, 5, 5, 170, 60, 4, 0xFFFFFF, .8)			
-			Draw.drawRoundRect(playerWeaponContainer, 180, 5, 170, 60, 4, 0xFFFFFF, .8)						
-			Draw.drawRoundRect(playerWeaponContainer, 355, 5, 170, 60, 4, 0xFFFFFF, .8)
-			
-			bottomPanel.addChild(playerWeaponContainer)
+			playerAvatar = new Avatar(_model.player);
+			playerAvatar.x = playerWeaponContainer.x - playerAvatar.width - 10
+			playerAvatar.y = playerWeaponContainer.y;
+			bottomPanel.addChild(playerAvatar)			
 		    
-		    playerAttacks = [];
-			var counters:Array = [0,0,0];
-		    for(var i:int = 0; i < _model.player.weapons.length; i++)
-		    {	       
-	            var weapon:Weapon = _model.player.weapons[i];
-	            playerWeaponContainer.addChild(weapon);				
-	            weapon.x = 10 + (weapon.width + 5) * counters[weapon.weaponVO.tier] + weapon.weaponVO.tier * 175;
-	            weapon.y = 10;
-				counters[weapon.weaponVO.tier]++;
-	            playerAttacks.push(weapon);		        				        
-		    }
-		    
-		    playerWeaponContainer.x = 105;
-		    playerWeaponContainer.y = 5;	   
-		    
-		    playerLife = new Sprite()								
-			Draw.drawRoundRect(playerLife, 0, 0, Config.WIDTH - 110, 15, 4, Config.C4, .8)
-			playerLife.x = 105;
-			playerLife.y = 80;
-			playerLife.scaleX = _model.player.currentHealth/_model.player.totalHealth
-			bottomPanel.addChild(playerLife)
-			TweenMax.from(playerLife, 1, {delay:1, scaleX:0})			
-			
-			playerLifeText = TextUtil.createText({color:0x111111});
-			addChild(playerLifeText);
-		    playerLifeText.x = 105;
-		    playerLifeText.y = 78;
-		    playerLifeText.text = "Health: " + _model.player.currentHealth;
-		    bottomPanel.addChild(playerLifeText)
+		    playerLife = new LifeBar(_model.player);	
+			bottomPanel.addChild(playerLife);	
+			playerLife.x = playerWeaponContainer.x;
+			playerLife.y = playerWeaponContainer.y + playerWeaponContainer.height + 5;
 		}
 		
 		private function createEnemy():void
 		{		
-		    topPanel.mouseChildren = false;
-			Draw.drawRoundRect(topPanel, Config.WIDTH - 95, 5, 90, 90, 5, Config.C1, .8)
-			Draw.drawRoundRect(topPanel, Config.WIDTH - 90, 10, 80, 80, 4, 0xFFFFFF, .8)
-			
-			var enemy:Enemy = new Enemy(_enemyVO)
-			topPanel.addChild(enemy)			
-			enemy.scaleX = enemy.scaleY = Math.min(1, Math.min(80/enemy.width, 80/enemy.height))
-			enemy.x = Config.WIDTH - 50
-			enemy.y = 50
-			
-			enemySprite = new Enemy(_enemyVO)
-			enemySprite.enemyVO = _enemyVO
+		    topPanel.mouseChildren = false;			
+			enemySprite = new Body(_enemyVO)
 			addChild(enemySprite)
 			enemySprite.rotation = -90;
 			enemySprite.x = Config.WIDTH - enemySprite.width - 40;
@@ -225,52 +185,27 @@ package components.fight {
 		    levelText.text = "Lvl: " + _enemyVO.level;
 		    topPanel.addChild(levelText)			    
 		    
-		    enemyWeaponContainer = new Sprite();
-		    enemyWeaponContainer.graphics.clear();			
+		    enemyWeaponContainer = new WeaponSection(_enemyVO);
+		    enemyWeaponContainer.clear();		
+			enemyWeaponContainer.x = 165;
+		    enemyWeaponContainer.y = 5; 
+			topPanel.addChild(enemyWeaponContainer)	  
 			
-			Draw.drawRoundRect(enemyWeaponContainer, 0, 0, Config.WIDTH - 110, 70, 5, Config.C1, .8)
-			Draw.drawRoundRect(enemyWeaponContainer, 5, 5, 170, 60, 4, 0xFFFFFF, .8)
-			Draw.drawRoundRect(enemyWeaponContainer, 180, 5, 170, 60, 4, 0xFFFFFF, .8)
-			Draw.drawRoundRect(enemyWeaponContainer, 355, 5, 170, 60, 4, 0xFFFFFF, .8)
-			
-			topPanel.addChild(enemyWeaponContainer)
+			enemyAvatar = new Avatar(_enemyVO);
+			topPanel.addChild(enemyAvatar)			
+			enemyAvatar.x = enemyWeaponContainer.x + enemyWeaponContainer.width + 10;
+			enemyAvatar.y = enemyWeaponContainer.y;
 		    
-		    enemyWeaponContainer.x = 5;
-		    enemyWeaponContainer.y = 5;
-		    
-		    enemyAttacks = [];
-			var counters:Array = [0,0,0];
-		    for(var i:int = 0; i < _enemyVO.weapons.length; i++)
-		    {
-	            var weapon:Weapon = _enemyVO.weapons[i];
-	            enemyWeaponContainer.addChild(weapon);
-	            weapon.x = 10 + (weapon.width + 5) * counters[weapon.weaponVO.tier] + weapon.weaponVO.tier * 175;
-	            weapon.y = 10;
-				counters[weapon.weaponVO.tier]++;
-	            enemyAttacks.push(weapon);
-		    }
-		    
-		    enemyLife = new Sprite();			
-			Draw.drawRoundRect(enemyLife, 0, 0, Config.WIDTH - 110, 15, 4, Config.C4, .8)
-			enemyLife.x = 5;
-			enemyLife.y = 80;
-			enemyLife.scaleX = _enemyVO.currentHealth/_enemyVO.totalHealth;
-			topPanel.addChild(enemyLife)			
-			TweenMax.from(enemyLife, 1, {delay:1, scaleX:0})
-						
-			enemyLifeText = TextUtil.createText({color:0x111111});
-			addChild(enemyLifeText);
-		    enemyLifeText.x = 10;
-		    enemyLifeText.y = 78;
-		    enemyLifeText.text = "Health: " + _enemyVO.currentHealth;
-		    topPanel.addChild(enemyLifeText)	  
+			enemyLife = new LifeBar(_enemyVO);	
+			topPanel.addChild(enemyLife);			
+			enemyLife.x = enemyWeaponContainer.x;
+			enemyLife.y = enemyWeaponContainer.y + enemyWeaponContainer.height + 5;
 		}
 		
 		public function update():void
 		{
-		    playerLifeText.text = "Health: " + _model.player.currentHealth;
-		    enemyLifeText.text = "Health: " + _enemyVO.currentHealth;
-			updateLifeBars();
+			enemyLife.update();
+			playerLife.update();
 		}
 		
 		public function playAttackAnimation(target:String, weapon:Weapon):void
@@ -298,18 +233,18 @@ package components.fight {
 		    if(obj && contains(obj))
 		        removeChild(obj);
 			
-			updateLifeBars();
+			update();
 			
 			animationsFinished = true;
 		}
 		
-		public function updateLifeBars():void
+		/*public function updateLifeBars():void
 		{
 			if(enemyLife.scaleX != _enemyVO.currentHealth/_enemyVO.totalHealth)
 				TweenMax.to(enemyLife, 1, {scaleX:_enemyVO.currentHealth/_enemyVO.totalHealth})  
 			if(playerLife.scaleX != _model.player.currentHealth/_model.player.totalHealth)
 		    	TweenMax.to(playerLife, 1, {scaleX:_model.player.currentHealth/_model.player.totalHealth}) 
-		}
+		}*/
 				
 		private function letTheGamesBegin():void
 		{
@@ -353,6 +288,10 @@ package components.fight {
 	            weapon = _model.player.weapons[i];
 	            swapPanel.addPlayerWeapon(weapon);		        	      
 		    }
+		}
+		
+		public function clean():void
+		{
 		}
 		
 		public function gameOver(callBack:Function):void

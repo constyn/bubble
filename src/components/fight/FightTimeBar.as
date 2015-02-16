@@ -71,7 +71,7 @@ package components.fight {
 		    bar = new Sprite()
 		    bar.mask = barMask;
 		    
-		    colors = [Config.C2, 0xE300B6]; 
+		    colors = [Config.C2, Config.C3]; 
             alphas = [.9, .9]; 
             ratios = [0, 255];  
 		    bar.graphics.beginGradientFill(GradientType.LINEAR, colors, alphas, 
@@ -92,7 +92,7 @@ package components.fight {
 		    if(levels[currentLevel] <= value)
 			{
 				currentLevel++
-				TweenMax.to(bar, .2, {tint:0xFDCBCB, yoyo:true, repeat:1})
+				TweenMax.to(bar, .2, {tint:Config.C3, yoyo:true, repeat:1})
 		        
 		        ghostBack.alpha = 1;
 		        ghostBack.scaleX = 1;

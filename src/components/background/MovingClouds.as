@@ -111,7 +111,7 @@ package components.background
 			this.addChild(cloudsMask);
 			this.addChild(worldBitmap);
 			cloudsBitmap.mask = cloudsMask;
-							
+							;
 			makeClouds();
 			setRectangles();
 		
@@ -182,7 +182,7 @@ package components.background
 			//cloudsBitmapData.perlinNoise(259,177,numOctaves,29684,true,true,9,false,offsets);
 			//cloudsBitmapData.perlinNoise(127,270,numOctaves,79788,true,true,14,true,offsets);
 			//cloudsBitmapData.perlinNoise(234,105,numOctaves,37151,true,true,14,false,offsets);
-			cloudsBitmapData.perlinNoise(300,300,numOctaves,32430,true,true,15,false,offsets);
+			cloudsBitmapData.perlinNoise(300,300,numOctaves,32430+int(Math.random()*100),true,true,15,false,offsets);
 			//cloudsBitmapData.perlinNoise(periodX,periodY,numOctaves,seed,true,true,1,true,offsets);
 			//cloudsBitmapData.applyFilter(cloudsBitmapData, cloudsBitmapData.rect, new Point(), cmf);
 		/*	
