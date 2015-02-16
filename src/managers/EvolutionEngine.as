@@ -1,6 +1,7 @@
 package managers
 {
 	import config.Config;
+	import flash.geom.Point;
     import skills.*
     import flash.display.Sprite;
     import genetic.Generator;
@@ -144,16 +145,39 @@ package managers
 			cellVO2.radius = cellRadius;
 			cellVO1.color = randColor;	
 			cellVO2.color = randColor;                
-			var randRadius:Number = (cellRadius / 2) * Math.random() * (vo.level-1)     
-			var angle:Number = Math.random() * 360;
-			cellVO1.relativeX = Math.sin(angle) * randRadius;
-			cellVO1.relativeY = Math.cos(angle) * randRadius;
-			cellVO2.relativeX = Math.sin(-angle) * randRadius;
-			cellVO2.relativeY = Math.cos(-angle) * randRadius;  
-			vo.cellArray.push(cellVO1); 
-			vo.cellArray.push(cellVO2);                
+			var randRadius:Number = cellRadius * Math.random() * (vo.level)     
+			var angle:Number = Math.random() * 180;
+			
+			if(vo.level > 1){
+				cellVO1.relativeX = Math.sin(angle) * randRadius;
+				cellVO1.relativeY = Math.cos(angle) * randRadius;
+				cellVO2.relativeX = Math.sin(-angle) * randRadius;
+				cellVO2.relativeY = Math.cos(-angle) * randRadius;  			
+				vo.cellArray.push(cellVO1); 
+				vo.cellArray.push(cellVO2);  			
+			}
+			else if (vo.level < 9) {
+				
+			}
+            else {
+				vo.cellArray.push(cellVO1); 
+			}
+			
 			vo.totalHealth += cellRadius * 5;
 			vo.currentHealth = vo.totalHealth;
+		}
+		
+		private function getProximityPos(cells:Array):void
+		{
+			
+			for each(var cell:CellVO in cells) {
+				
+			}
+		}
+		
+		private function distance(x1:Number, y1:Number, x2:Number, y2:Number):Number
+		{
+			return(Math.sqrt(Math.pow(x2-x1, 2)+Math.pow(y2-y1,2)))
 		}
 		
 		private function generateNutrients():void

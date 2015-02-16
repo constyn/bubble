@@ -230,16 +230,7 @@ package components
 		{		     
 		    moving = false;
 		}
-		
-		override protected function createCell(cellVO:CellVO):Cell
-		{		    
-		    var cell:Cell = new Cell(cellVO);
-		    cell.x = cellVO.relativeX;
-		    cell.y = cellVO.relativeY;
-		    
-		    return cell;
-		}
-		
+			
 		public function updateWayPoint(wayPoint:WayPoint):void 
 		{	 
 		    this.wayPoint = wayPoint;   

@@ -151,7 +151,7 @@ package components.fight {
 		    playerWeaponContainer.y = 5;
 			bottomPanel.addChild(playerWeaponContainer)	    	
 			
-			playerAvatar = new Avatar(_model.player);
+			playerAvatar = new Avatar(playerSprite);
 			playerAvatar.x = playerWeaponContainer.x - playerAvatar.width - 10
 			playerAvatar.y = playerWeaponContainer.y;
 			bottomPanel.addChild(playerAvatar)			
@@ -191,7 +191,7 @@ package components.fight {
 		    enemyWeaponContainer.y = 5; 
 			topPanel.addChild(enemyWeaponContainer)	  
 			
-			enemyAvatar = new Avatar(_enemyVO);
+			enemyAvatar = new Avatar(enemySprite);
 			topPanel.addChild(enemyAvatar)			
 			enemyAvatar.x = enemyWeaponContainer.x + enemyWeaponContainer.width + 10;
 			enemyAvatar.y = enemyWeaponContainer.y;
