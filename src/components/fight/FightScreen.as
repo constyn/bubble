@@ -54,6 +54,8 @@ package components.fight {
 		public var enemyAvatar:Avatar;
 		public var playerSprite:Body;
 		public var enemySprite:Body;
+		private var fightScale:Number = 1;
+		private var offset:int = 5;
 			
 		public var animationsFinished:Boolean;
 		
@@ -72,7 +74,7 @@ package components.fight {
 		    removeEventListener(Event.ADDED_TO_STAGE, init)
 		    createBack();
 		    createPlayer();
-		    createEnemy();
+		    createEnemy();			
 		    fightText = TextUtil.createText({color:Config.C2, size:35, bold:true});
 		    addChild(fightText);
 		    fightText.text = "FIGHT!!!";	   		    
@@ -130,6 +132,8 @@ package components.fight {
 			playerSprite.x = playerSprite.width / 2 + 40;
 			playerSprite.y = Config.HEIGHT/ 2;	
 			playerSprite.rotation = 90;
+			fightScale = Math.min(1, 200 / playerSprite.height, fightScale);
+			//playerSprite.scaleX = playerSprite.scaleY = fightScale
 			TweenMax.from(playerSprite, 1, {delay:1.5, x:-playerSprite.width, onComplete:letTheGamesBegin})
 			
 			playerTimeBar = new FightTimeBar();			
@@ -137,29 +141,21 @@ package components.fight {
 			playerTimeBar.y = playerSprite.y + playerSprite.height / 2 + 10;
 			addChild(playerTimeBar)
 			TweenMax.from(playerTimeBar, 1, {delay:1.5, x:-playerTimeBar.width})
-						
-			var levelText:TextField = TextUtil.createText({color:0x111111});
-			addChild(levelText);
-		    levelText.x = 28;
-		    levelText.y = 73;
-		    levelText.text = "Lvl: " + _model.player.level;
-		    bottomPanel.addChild(levelText)	
 		    
-		    playerWeaponContainer = new WeaponSection(_model.player);
-			playerWeaponContainer.clear();
-			playerWeaponContainer.x = 105;
-		    playerWeaponContainer.y = 5;
-			bottomPanel.addChild(playerWeaponContainer)	    	
+			playerAvatar = new Avatar(playerSprite, _model.player);
+			bottomPanel.addChild(playerAvatar)	
+			playerAvatar.x = offset;
+			playerAvatar.y = offset;					
 			
-			playerAvatar = new Avatar(playerSprite);
-			playerAvatar.x = playerWeaponContainer.x - playerAvatar.width - 10
-			playerAvatar.y = playerWeaponContainer.y;
-			bottomPanel.addChild(playerAvatar)			
-		    
-		    playerLife = new LifeBar(_model.player);	
+			playerLife = new LifeBar(_model.player);	
 			bottomPanel.addChild(playerLife);	
-			playerLife.x = playerWeaponContainer.x;
-			playerLife.y = playerWeaponContainer.y + playerWeaponContainer.height + 5;
+			playerLife.x = playerAvatar.x + playerAvatar.width + 10;
+			playerLife.y = playerAvatar.y;
+			
+		    playerWeaponContainer = new WeaponSection(_model.player);
+			bottomPanel.addChild(playerWeaponContainer)	   			
+			playerWeaponContainer.x = playerLife.x;
+		    playerWeaponContainer.y = playerLife.y + playerLife.height + 1;
 		}
 		
 		private function createEnemy():void
@@ -169,37 +165,31 @@ package components.fight {
 			addChild(enemySprite)
 			enemySprite.rotation = -90;
 			enemySprite.x = Config.WIDTH - enemySprite.width - 40;
-			enemySprite.y = Config.HEIGHT/ 2;	
-			TweenMax.from(enemySprite, 1, {delay:1.5, x:Config.WIDTH + enemySprite.width + enemySprite.height})
+			enemySprite.y = Config.HEIGHT / 2;	
+			fightScale = Math.min(1, 200 / enemySprite.height, fightScale);
+			//enemySprite.scaleX = enemySprite.scaleY = fightScale;
+			TweenMax.from(enemySprite, 1, { delay:1.5, x:Config.WIDTH + enemySprite.width + enemySprite.height } );
 						
 			enemyTimeBar = new FightTimeBar();
 			addChild(enemyTimeBar)
 			enemyTimeBar.x = Config.WIDTH - enemyTimeBar.width - 20;
 			enemyTimeBar.y = enemySprite.y + enemySprite.height / 2 + 10;
-			TweenMax.from(enemyTimeBar, 1, {delay:1.5, x:Config.WIDTH + enemyTimeBar.width * 2})
-			
-			var levelText:TextField = TextUtil.createText({color:0x111111});
-			addChild(levelText);
-		    levelText.x = Config.WIDTH - 72;
-		    levelText.y = 73;
-		    levelText.text = "Lvl: " + _enemyVO.level;
-		    topPanel.addChild(levelText)			    
+			TweenMax.from(enemyTimeBar, 1, { delay:1.5, x:Config.WIDTH + enemyTimeBar.width * 2 } );  
 		    
-		    enemyWeaponContainer = new WeaponSection(_enemyVO);
-		    enemyWeaponContainer.clear();		
-			enemyWeaponContainer.x = 165;
-		    enemyWeaponContainer.y = 5; 
-			topPanel.addChild(enemyWeaponContainer)	  
-			
-			enemyAvatar = new Avatar(enemySprite);
+			enemyAvatar = new Avatar(enemySprite, _enemyVO);
 			topPanel.addChild(enemyAvatar)			
-			enemyAvatar.x = enemyWeaponContainer.x + enemyWeaponContainer.width + 10;
-			enemyAvatar.y = enemyWeaponContainer.y;
-		    
+			enemyAvatar.x = 705;
+			enemyAvatar.y = 5;
+			
 			enemyLife = new LifeBar(_enemyVO);	
 			topPanel.addChild(enemyLife);			
-			enemyLife.x = enemyWeaponContainer.x;
-			enemyLife.y = enemyWeaponContainer.y + enemyWeaponContainer.height + 5;
+			enemyLife.x = enemyAvatar.x - enemyLife.width - 10;
+			enemyLife.y = enemyAvatar.y;
+			
+		    enemyWeaponContainer = new WeaponSection(_enemyVO);			
+			topPanel.addChild(enemyWeaponContainer)	  					
+			enemyWeaponContainer.x = enemyLife.x;
+		    enemyWeaponContainer.y = enemyLife.y + enemyLife.height + 1;
 		}
 		
 		public function update():void

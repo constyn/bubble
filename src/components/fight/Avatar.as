@@ -7,9 +7,11 @@ package components.fight
 	import flash.display.Sprite;	
 	import flash.display.PixelSnapping;
 	import flash.geom.Matrix;
+	import flash.text.TextField;
 	import model.EntityVO;
 	import utils.Draw;
 	import flash.utils.setTimeout;
+	import utils.TextUtil;
 	/**
 	 * ...
 	 * @author 
@@ -21,9 +23,10 @@ package components.fight
 		private var entityVO:EntityVO;
 		private var body:Body;
 		
-		public function Avatar(body:Body) 
+		public function Avatar(body:Body, entityVO:EntityVO) 
 		{
 			this.body = body;
+			this.entityVO = entityVO;
 			draw();
 		}
 		
@@ -48,7 +51,13 @@ package components.fight
 			pMatrix.scale(scale, scale);
 			pMatrix.translate(40, 40);
             bgBmpd.draw(body, pMatrix, null, null, null, false);
-            addChild(bgBitmap); 			
+            addChild(bgBitmap); 	
+			
+			var levelText:TextField = TextUtil.createText({color:0x222222, contour:Config.C1});
+			addChild(levelText);
+		    levelText.x = 6;
+		    levelText.y = 67;
+		    levelText.text = "Lvl: " + entityVO.level;
 		}
 	}
 

@@ -25,8 +25,9 @@ package components.fight
 		
 		private function draw():void
 		{
+			Draw.drawRoundRect(this, 0, 0, 530, 15, 4, 0x00, 0.3)
 			life = new Sprite();
-			Draw.drawRoundRect(life, 0, 0, 530, 15, 4, Config.C4, 1)
+			Draw.drawRoundRect(life, 0, 0, 530, 15, 4, Config.C5, 1)
 			life.scaleX = entityVO.currentHealth / entityVO.totalHealth;
 			this.addChild(life);
 			TweenMax.from(life, 1, { delay:1, scaleX:0 } );		

@@ -136,7 +136,7 @@ package managers
 		
 		public function createCell(vo:EntityVO):void
 		{		
-			var colorArr:Array = [Config.C1, Config.C3, Config.C6, Config.C5, Config.C2, Config.C4]
+			var colorArr:Array = [Config.C5, Config.C2, Config.C1, , Config.C4]//, Config.C5, Config.C2, Config.C4]
 			var cellRadius:Number = Math.round(Math.random() * 5 + 9);     
 			var randColor:Number = colorArr[int(Math.random() * colorArr.length)]; 
 			var cellVO1:CellVO = new CellVO();
@@ -148,20 +148,24 @@ package managers
 			var randRadius:Number = cellRadius * Math.random() * (vo.level)     
 			var angle:Number = Math.random() * 180;
 			
-			if(vo.level > 1){
-				cellVO1.relativeX = Math.sin(angle) * randRadius;
-				cellVO1.relativeY = Math.cos(angle) * randRadius;
-				cellVO2.relativeX = Math.sin(-angle) * randRadius;
-				cellVO2.relativeY = Math.cos(-angle) * randRadius;  			
-				vo.cellArray.push(cellVO1); 
-				vo.cellArray.push(cellVO2);  			
-			}
-			else if (vo.level < 9) {
+			if (vo.cellArray.length >= 2) {
 				
+				var prevCell1:CellVO = vo.cellArray[vo.cellArray.length-1];
+				var prevCell2:CellVO = vo.cellArray[vo.cellArray.length-2];
+				cellVO1.relativeX = Math.sin(angle) * prevCell1.radius + prevCell1.relativeX;
+				cellVO1.relativeY = Math.cos(angle) * prevCell1.radius + prevCell1.relativeY;
+				cellVO2.relativeX = Math.sin(-angle) * prevCell1.radius + prevCell2.relativeX;
+				cellVO2.relativeY = Math.cos(-angle) * prevCell1.radius + prevCell2.relativeY;  	
 			}
-            else {
-				vo.cellArray.push(cellVO1); 
+            else {				
+				cellVO1.relativeX = 0;
+				cellVO1.relativeY = 0;
+				cellVO2.relativeX = 0;
+				cellVO2.relativeY = 0;  	
 			}
+			
+			vo.cellArray.push(cellVO1); 
+			vo.cellArray.push(cellVO2); 
 			
 			vo.totalHealth += cellRadius * 5;
 			vo.currentHealth = vo.totalHealth;

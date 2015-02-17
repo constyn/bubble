@@ -39,7 +39,7 @@ package
 			volumes["music"] = .1;
 			volumes["battle"] = .1;
 			volumes["laser"] =  .1;
-			volumes["freeze"] = .1;
+			volumes["freeze"] = .05;
 			volumes["pop"] = .1;
 		
 			soundManager.loadSounds(sounds, volumes);
