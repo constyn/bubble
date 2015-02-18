@@ -136,7 +136,7 @@ package managers
 		
 		public function createCell(vo:EntityVO):void
 		{		
-			var colorArr:Array = [Config.C5, Config.C2, Config.C1, , Config.C4]//, Config.C5, Config.C2, Config.C4]
+			var colorArr:Array = [Config.C5, Config.C2, Config.C1, Config.C4]//, Config.C5, Config.C2, Config.C4]
 			var cellRadius:Number = Math.round(Math.random() * 5 + 9);     
 			var randColor:Number = colorArr[int(Math.random() * colorArr.length)]; 
 			var cellVO1:CellVO = new CellVO();

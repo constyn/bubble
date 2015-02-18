@@ -61,6 +61,7 @@ package managers
 		        return;	
 			}
 			
+			
 		    _model.player.fightBarLoaded -= (selectedWeapon.weaponVO.tier + 1) * 33;
 		    
 			FightSimulator.attack(enemy.enemyVO, _model.player, selectedWeapon.weaponVO);	    
@@ -169,7 +170,10 @@ package managers
 				
 	            enemy.dead = true;
 	            for each(var weapon:Weapon in _model.player.weapons)
+				{
+					weapon.removeEventListener(MouseEvent.CLICK, playerAttack)
 	            	weapon.weaponVO.coolDown = 0;
+				}
 	           
 	            fightScreen.playEnd(dispachGameEnd); 
 	        }

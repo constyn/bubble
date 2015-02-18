@@ -164,7 +164,7 @@ package components.fight {
 			enemySprite = new Body(_enemyVO)
 			addChild(enemySprite)
 			enemySprite.rotation = -90;
-			enemySprite.x = Config.WIDTH - enemySprite.width - 40;
+			enemySprite.x = Config.WIDTH - enemySprite.width / 2 - 40;
 			enemySprite.y = Config.HEIGHT / 2;	
 			fightScale = Math.min(1, 200 / enemySprite.height, fightScale);
 			//enemySprite.scaleX = enemySprite.scaleY = fightScale;

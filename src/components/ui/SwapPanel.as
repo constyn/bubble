@@ -92,7 +92,7 @@ package components.ui {
 	    {
 			addWeapon(weapon);
 	        enemyWeapons.push(weapon); 
-	        TweenMax.to(weapon, .5, {delay:Math.random()/2, x:"+50", y:165, ease:Back.easeOut})   	     
+	        TweenMax.to(weapon, .5, {delay:Math.random()/2, x:"-110", y:165, ease:Back.easeOut})   	     
 	    }
 		
 		private function addWeapon(weapon:Weapon):void
