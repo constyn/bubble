@@ -64,7 +64,7 @@ package managers
 			
 		    _model.player.fightBarLoaded -= (selectedWeapon.weaponVO.tier + 1) * 33;
 		    
-			FightSimulator.attack(enemy.enemyVO, _model.player, selectedWeapon.weaponVO);	    
+			FightSimulator.attack(_model.player, enemy.enemyVO, selectedWeapon.weaponVO);	    
 		   
 		   	if(selectedWeapon.weaponVO.skill)
 	        	selectedWeapon.weaponVO.coolDown = selectedWeapon.weaponVO.coolDown + 1;	   
@@ -89,7 +89,7 @@ package managers
 	        while(randWeapon.weaponVO.coolDown > 0 || !randWeapon.enabled)
 	            randWeapon = weapons[int(weapons.length * Math.random())]
 	        
-			FightSimulator.attack(_model.player, enemy.enemyVO, randWeapon.weaponVO);
+			FightSimulator.attack(enemy.enemyVO, _model.player, randWeapon.weaponVO);
 			
 	        enemy.enemyVO.fightBarLoaded -= (randWeapon.weaponVO.tier + 1) * 33;    
 	         	      

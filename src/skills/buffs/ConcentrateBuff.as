@@ -9,10 +9,10 @@ package skills.buffs {
 		
 		public function ConcentrateBuff(amount:Number) 
 		{
-			//super(ent, amount);			
+			super(amount);			
 		}
 		
-		override protected function addEffect():void
+	/*	override protected function addEffect():void
 		{
 			//enetity.attackEffect = amount;
 		}
@@ -20,6 +20,6 @@ package skills.buffs {
 		override protected function removeffect():void
 		{
 			//enetity.attackEffect = 1;
-		}
+		}*/
 	}
 }

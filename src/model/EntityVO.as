@@ -16,7 +16,6 @@ package model
 		public var fitness:Number;
 		public var weakEffect:Number = 1;
 		public var attackEffect:Number = 1;
-		public var pozBuffs:Array;
-		public var negBuffs:Array;
+		public var buffs:Array = [];
 	}		
 }

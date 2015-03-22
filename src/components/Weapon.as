@@ -63,8 +63,6 @@ package components
 			toolTipText =  "Attack: " +  TextUtil.setHTMLColor(String(_weaponVO.damage), Config.C2) + "\n";
 			if(_weaponVO.skill)
 			{			
-				if(!_weaponVO.skill.skillVO.doesDamage)
-					toolTipText = "";
 			    toolTipText += _weaponVO.skill.toString();	
 				
 				var turnText:String = weaponVO.coolDown +  " turn" + (_weaponVO.coolDown == 1? "":"s");
@@ -226,6 +224,11 @@ package components
 		{
 			TweenMax.to(weaponGr, .2, {delay:.2, y:0})
 			selectedForAttack = false
+		}
+		
+		public function useWeapon():void
+		{
+			
 		}
 	}	
 }

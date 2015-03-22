@@ -12,9 +12,14 @@ package skills {
 		{
 			super(level, tier);
 			skillVO = new SkillVO();
-			//skillVO.coolDown = int(Math.random() * 3 + 2)
-			//skillVO.amount = int(Math.random() * level + 20);
+			//skillVO.coolDown = range(2, 5);
+			skillVO.damage = range(0, level) + 20;
 			skillVO.name = "Frostbite";
+		}
+		
+		override public function applySkill(attacker:EntityVO, target:EntityVO):void
+		{
+			target.buffs.push(new SlowBuff(level));
 		}
 		
 		override public function toString():String

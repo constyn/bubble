@@ -13,7 +13,7 @@ package skills.buffs {
 			super(amount);			
 		}
 		
-		override public function update():void
+		/*override public function update():void
 		{
 			if(done) return;
 			
@@ -42,6 +42,6 @@ package skills.buffs {
 		override protected function removeffect():void
 		{
 			healthPerTick = 0;
-		}
+		}*/
 	}
 }

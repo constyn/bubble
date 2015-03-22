@@ -8,10 +8,10 @@ package skills.buffs {
 	{
 		public function WeakenBuff(amount:Number) 
 		{
-			//super(ent, amount);			
+			super(amount);			
 		}
 		
-		override protected function addEffect():void
+	/*	override protected function addEffect():void
 		{
 			//enetity.weakEffect = amount;
 		}
@@ -19,6 +19,6 @@ package skills.buffs {
 		override protected function removeffect():void
 		{
 			//enetity.weakEffect = 1;
-		}
+		}*/
 	}
 }

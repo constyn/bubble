@@ -36,8 +36,7 @@ package model
 	            player.decc = .95;
 	            player.terminalV = 3;
 	            player.level = 1;
-	            player.pozBuffs = [];
-		 		player.negBuffs = [];
+	            player.buffs = [];
 	            player.cellArray = []; 	 
 	            	            
 	            nutrients = [];     

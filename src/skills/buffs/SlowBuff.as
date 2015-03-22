@@ -9,7 +9,7 @@ package skills.buffs {import model.EntityVO;
 			super(amount);
 		}
 		
-		override protected function addEffect():void
+	/*	override protected function addEffect():void
 		{
 			//enetity.barLoadingEffect = .7;
 		}
@@ -17,6 +17,6 @@ package skills.buffs {import model.EntityVO;
 		override protected function removeffect():void
 		{
 			//enetity.barLoadingEffect = 1;
-		}
+		}*/
 	}
 }

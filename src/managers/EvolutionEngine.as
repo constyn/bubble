@@ -62,8 +62,7 @@ package managers
             enemyVO.cellArray = [];
             enemyVO.totalHealth = 0;
 			enemyVO.fitness = 0;
-			enemyVO.pozBuffs = [];
-		 	enemyVO.negBuffs = [];
+			enemyVO.buffs = [];
             createCells(enemyVO);		        
 	        createWeapons(enemyVO);
 			//enemyVO.actions = generator.generateActions(enemyVO)
@@ -207,37 +206,25 @@ package managers
 		{
 			var weaponLevels:Array = [1, 2.5, 4];
 			var weaponVO:WeaponVO = new WeaponVO();
+			var skill:NormalAttack;
 			weaponVO.tier = index % 3;				
-            weaponVO.damage = int(((Math.random() * (entity.level * 2) + 10) + 1) * weaponLevels[weaponVO.tier]);
 	     
 	        if(index != 0)
 			{					
 				var skillArr:Array = SPECIALS[weaponVO.tier];
-				var skill:NormalAttack = new skillArr[int(skillArr.length * Math.random())](entity.level, weaponVO.tier);
+				skill = new skillArr[int(skillArr.length * Math.random())](entity.level, weaponVO.tier);
 	        	weaponVO.skill = skill;
 			}
-			
-			if(!weaponVO.skill || weaponVO.skill.skillVO.doesDamage)
-			{	
-								
-				if(weaponVO.skill)	
-				{
-					weaponVO.name = weaponFirstName[int(weaponFirstName.length * Math.random())] + " " +
-									weaponSecondName[int(weaponSecondName.length * Math.random())] + " " +
-									weaponVO.skill.skillVO.name;
-				}
-				else
-				{
-					
-					weaponVO.name = weaponFirstName[int(weaponFirstName.length * Math.random())] + " " +
-									weaponFirstName[int(weaponFirstName.length * Math.random())] + " " +
-									weaponSecondName[int(weaponSecondName.length * Math.random())];
-				}				
-			}
 			else
-			{				
-				weaponVO.name = weaponVO.skill.skillVO.name;
-			}
+			{
+				skill = new NormalAttack(entity.level, weaponVO.tier);
+				if(entity is PlayerVO) skill.skillVO.damage = 2000;
+	        	weaponVO.skill = skill;
+			}			
+			
+			weaponVO.name = weaponFirstName[int(weaponFirstName.length * Math.random())] + " " +
+							weaponFirstName[int(weaponFirstName.length * Math.random())] + " " +
+							weaponSecondName[int(weaponSecondName.length * Math.random())];			
 				
 			var weapon:Weapon = new Weapon(weaponVO);
 			return weapon;

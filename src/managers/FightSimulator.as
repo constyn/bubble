@@ -44,10 +44,8 @@ package managers
 			}
 			entity1.fightBarLoaded = 0;
 			entity2.fightBarLoaded = 0;
-			entity1.negBuffs = [];
-			entity1.pozBuffs = [];
-			entity2.negBuffs = [];
-			entity2.pozBuffs = [];
+			entity1.buffs = [];
+			entity2.buffs = [];
 			
 			return winner;
 		}
@@ -73,21 +71,42 @@ package managers
 			}
 		}
 		
-		public static function attack(e1:EntityVO, e2:EntityVO, weaponVO:WeaponVO):void
+		public static function attack(attacker:EntityVO, target:EntityVO, weaponVO:WeaponVO):void
 		{
-			if(weaponVO.skill)
-				weaponVO.skill.applySkill(e1, e2);
-			else	     
-	        	e1.currentHealth = Math.max(e1.currentHealth - (weaponVO.damage * e1.weakEffect), 0); 	        
+			weaponVO.skill.applySkill(attacker, target);	
+			
+			var svo:SkillVO = weaponVO.skill.skillVO;
+						
+			if (svo.damage > 0)
+			{
+				target.currentHealth -= svo.damage;
+				target.currentHealth = getCorrectedValue(target); 
+			}
+			if (svo.heal > 0)
+			{
+				attacker.currentHealth += svo.heal;
+				attacker.currentHealth = getCorrectedValue(attacker); 
+			}
+		}
+		
+		static private function getCorrectedValue(e:EntityVO):int 
+		{
+			return Math.round(Math.min(e.totalHealth, Math.max(0, e.currentHealth)));
 		}
 		
 		public function updateBuffs(ent:EntityVO):void
 		{
-			for each(var buff:ABuff in ent.negBuffs)
-				buff.update();
-				
-			for each(buff in ent.pozBuffs)
-				buff.update();
+			for each(var buff:ABuff in ent.buffs)
+			{			
+				if (buff.done)
+				{
+					ent.buffs.splice(ent.buffs.indexOf(buff), 1);
+				}
+				else	
+				{
+					buff.update();				
+				}
+			}
 		}
 	}	
 }

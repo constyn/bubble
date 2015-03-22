@@ -5,25 +5,30 @@ package skills.buffs {
 	 */
 	public class ABuff 
 	{
-		protected var ticks:int = 50;				
+		protected var ticks:int = 10;				
 		protected var repeatCount:int;
 		
 		public var done:Boolean;		
 
 		protected var counter:int;		
-		protected var enetity:EntityVO;
 		protected var amount:Number
 		
 		public function ABuff(amount:Number)
 		{
-			//enetity = ent;
 			this.amount = amount
-			addEffect();
+			repeatCount = 0;
+			counter = 0;
+		}
+		
+		public function applyBuff(ent:EntityVO):void
+		{
+			
 		}
 		
 		public function update():void
 		{
 			if(done) return;
+			
 			
 			if(repeatCount < ticks)
 			{		
@@ -36,19 +41,8 @@ package skills.buffs {
 			}
 			else
 			{
-				removeffect();
 				done = true;
 			}
-		}
-		
-		protected function addEffect():void
-		{
-			
-		}
-		
-		protected function removeffect():void
-		{
-			
 		}
 	}
 }

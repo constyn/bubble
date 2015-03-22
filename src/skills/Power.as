@@ -15,6 +15,11 @@ package skills {
 			skillVO.name = "Power Attack";			
 		}
 		
+		override public function applySkill(attacker:EntityVO, target:EntityVO):void
+		{			
+			attacker.attackEffect *= 1.3;
+		}	
+		
 		override public function toString():String
 		{
 			var toolTipText:String = "";			

@@ -11,13 +11,17 @@ package skills {
 	{
 		public function Debuff(level:int, tier:int)
 		{
-			super(level, tier);
-			skillVO = new SkillVO();			
-			skillVO.doesDamage = false;
+			super(level, tier);	
+			skillVO = new SkillVO();
 			//skillVO.coolDown = int(Math.random() * 3 + 2)
 			//skillVO.amount = int(Math.random() * level + 1);
 			skillVO.name = "Debuff";
 		}
+		
+		override public function applySkill(attacker:EntityVO, target:EntityVO):void
+		{
+			attacker.buffs = [];
+		}	
 		
 		override public function toString():String
 		{

@@ -10,24 +10,18 @@ package skills {
 	{
 		public var skillVO:SkillVO;
 		public var skillAmountColor:uint = Config.C5;
+		protected var level:int;
 		
 		public function NormalAttack(level:int, tier:int)
 		{
-			
+			this.level = level;
+			skillVO = new SkillVO();
+			skillVO.damage = range(20, level + 20);
+			skillVO.name = "";
 		}
 		
 		public function applySkill(attacker:EntityVO, target:EntityVO):void
 		{
-			if (skillVO.doesDamage)
-			{
-				target.currentHealth -= skillVO.damage;
-				target.currentHealth = getCorrectedValue(target); 
-			}
-			if (skillVO.lifeRecovery)
-			{
-				attacker.currentHealth += skillVO.heal;
-				attacker.currentHealth = getCorrectedValue(attacker); 
-			}
 		}
 		
 		private function getCorrectedValue(e:EntityVO):int 
@@ -38,6 +32,11 @@ package skills {
 		public function toString():String
 		{
 			return "";
+		}
+		
+		protected function range(from:Number, to:Number):Number
+		{
+			return Math.random() * to + from;
 		}
 	}
 }

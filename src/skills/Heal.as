@@ -12,9 +12,9 @@ package skills {
 		{
 			super(level, tier);
 			skillVO = new SkillVO();
-			skillVO.doesDamage = false;
+			skillVO.heal = range(2, 5) * level * (tier + 1);
 			//skillVO.coolDown = int(Math.random() * 3 + 4 + tier)
-			//skillVO.amount = (Math.round(Math.random() * 3) + 2) * level * (tier + 1);
+			//skillVO.amount =
 			skillVO.name = "Heal";
 		}
 		

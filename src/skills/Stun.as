@@ -2,6 +2,7 @@ package skills {
 	import model.SkillVO;
 	import model.WeaponVO;
 	import model.EntityVO;
+	import skills.buffs.StunBuff;
 	/**
 	 * @author taires
 	 */
@@ -11,11 +12,15 @@ package skills {
 		{
 			super(level, tier);
 			skillVO = new SkillVO();
-			skillVO.doesDamage = false;
 			//skillVO.coolDown = int(Math.random() * 5 + 3)
 			//skillVO.amount = int(Math.random() * level + 5);
 			skillVO.name = "Stun";
 		}
+		
+		override public function applySkill(attacker:EntityVO, target:EntityVO):void
+		{			
+			target.buffs.push(new StunBuff(level));
+		}	
 		
 		override public function toString():String
 		{

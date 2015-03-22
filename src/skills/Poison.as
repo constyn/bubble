@@ -11,14 +11,17 @@ package skills {
 	{
 		public function Poison(level:int, tier:int)
 		{
-			super(level, tier);
+			super(level, tier);	
 			skillVO = new SkillVO();
-			skillVO.doesDamage = true;			
 			skillVO.damage = int(Math.random() * level + 1);
-			skillVO.name = "Poison";
-			var poisonBuff:PoisonBuff = new PoisonBuff(1);
-			skillVO.opponentBuffs = [poisonBuff];			
+			skillVO.name = "Poison";		
 		}
+		
+		override public function applySkill(attacker:EntityVO, target:EntityVO):void
+		{			
+			var poisonBuff:PoisonBuff = new PoisonBuff(level);
+			target.buffs.push(poisonBuff)
+		}	
 		
 		override public function toString():String
 		{
