@@ -12,17 +12,14 @@ package skills.buffs {
 
 		protected var counter:int;		
 		protected var amount:Number
+		protected var ent:EntityVO
 		
-		public function ABuff(amount:Number)
+		public function ABuff(e:EntityVO, amount:Number)
 		{
 			this.amount = amount
+			ent = e;
 			repeatCount = 0;
 			counter = 0;
-		}
-		
-		public function applyBuff(ent:EntityVO):void
-		{
-			
 		}
 		
 		public function update():void
@@ -37,12 +34,23 @@ package skills.buffs {
 				{
 					counter = 0;
 					repeatCount++;
+					onTick();
 				}
 			}
 			else
 			{
 				done = true;
 			}
+		}
+		
+		public function applyBuff():void
+		{
+			
+		}
+		
+		public function onTick():void
+		{
+			
 		}
 	}
 }

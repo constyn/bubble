@@ -144,14 +144,14 @@ package managers
 			    
 		        if(_model.player.fightBarLoaded < 100)
 		        {        
-		            _model.player.fightBarLoaded += _model.player.barLoadingSpeed * _model.player.barLoadingEffect;
+		            _model.player.fightBarLoaded += _model.player.barLoadingSpeed * _model.player.barSpeedMultiplier;
 		            fightScreen.playerTimeBar.update(_model.player.fightBarLoaded/100); 
 								            
 		        }
 		        
 		        if(enemy.enemyVO.fightBarLoaded < 100)
 		        {        
-		            enemy.enemyVO.fightBarLoaded += enemy.enemyVO.barLoadingSpeed * enemy.enemyVO.barLoadingEffect;
+		            enemy.enemyVO.fightBarLoaded += enemy.enemyVO.barLoadingSpeed * enemy.enemyVO.barSpeedMultiplier;
 		            fightScreen.enemyTimeBar.update(enemy.enemyVO.fightBarLoaded/100); 
 		        }
 				

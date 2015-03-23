@@ -11,11 +11,11 @@ package model
 	    public var level:int;
 	    public var fightBarLoaded:Number = 0;
 		public var barLoadingSpeed:Number = 0.25;
-		public var barLoadingEffect:Number = 1;
+		public var barSpeedMultiplier:Number = 1;
 		public var actions:Array;
 		public var fitness:Number;
-		public var weakEffect:Number = 1;
-		public var attackEffect:Number = 1;
+		public var weakenMultiplier:Number = 1;
+		public var attackMultiplier:Number = 1;
 		public var buffs:Array = [];
 	}		
 }

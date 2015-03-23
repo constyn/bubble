@@ -1,47 +1,23 @@
 package skills.buffs {
 	import model.EntityVO;
+	import utils.NumUtil;
 
 	/**
 	 * @author taires
 	 */
-	public class PoisonBuff extends ABuff
+	public class PoisonBuff extends ABuff implements IBadBuff
 	{
 		private var healthPerTick:int;
 		
-		public function PoisonBuff(amount:Number) 
+		public function PoisonBuff(e:EntityVO, amount:Number) 
 		{
-			super(amount);			
+			super(e, amount);	
+			healthPerTick = 1;
 		}
 		
-		/*override public function update():void
+		override public function onTick():void
 		{
-			if(done) return;
-			
-			if(repeatCount < ticks)
-			{		
-				counter++	
-				if(counter == 100)
-				{
-					counter = 0;
-					repeatCount++;
-					enetity.currentHealth -= healthPerTick;
-				}
-			}
-			else
-			{
-				removeffect();
-				done = true;
-			}
+			ent.currentHealth = NumUtil.getCorrectedValue(ent.totalHealth, ent.currentHealth - healthPerTick);
 		}
-		
-		override protected function addEffect():void
-		{
-			healthPerTick = amount;
-		}
-		
-		override protected function removeffect():void
-		{
-			healthPerTick = 0;
-		}*/
 	}
 }

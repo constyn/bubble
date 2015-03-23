@@ -1,14 +1,15 @@
 package skills.buffs 
 {
+	import model.EntityVO;
 	/**
 	 * ...
 	 * @author taires
 	 */
-	public class StunBuff extends ABuff 
+	public class StunBuff extends ABuff implements IBadBuff
 	{		
-		public function StunBuff(amount:Number) 
+		public function StunBuff(e:EntityVO, amount:Number) 
 		{
-			super(amount);
+			super(e, amount);	
 		}		
 	}
 }

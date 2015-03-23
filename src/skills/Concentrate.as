@@ -20,7 +20,7 @@ package skills {
 		
 		override public function applySkill(attacker:EntityVO, target:EntityVO):void
 		{
-			attacker.buffs.push(new ConcentrateBuff(level));
+			attacker.buffs.push(new ConcentrateBuff(attacker, level));
 		}		
 		
 		override public function toString():String

@@ -17,7 +17,7 @@ package skills {
 		
 		override public function applySkill(attacker:EntityVO, target:EntityVO):void
 		{			
-			attacker.attackEffect *= 1.3;
+			//attacker.attackMultiplier *= 1.3;
 		}	
 		
 		override public function toString():String

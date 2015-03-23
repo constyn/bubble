@@ -17,7 +17,7 @@ package skills {
 			this.level = level;
 			skillVO = new SkillVO();
 			skillVO.damage = range(20, level + 20);
-			skillVO.name = "";
+			skillVO.name = "Normal";
 		}
 		
 		public function applySkill(attacker:EntityVO, target:EntityVO):void

@@ -11,7 +11,7 @@ package managers
 	public class EvolutionEngine extends Sprite
 	{		
 		private const SPECIALS:Array = [
-									   [Heal, Concentrate, Debuff],
+									   [Concentrate, Concentrate, Concentrate],
 									   [Power, Concentrate, Drain, Heal, Laser, Cold, Stun],
 									   [Power, Drain, Heal, Laser, Cold, Poison]]
 							

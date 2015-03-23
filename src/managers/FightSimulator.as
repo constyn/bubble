@@ -6,6 +6,7 @@ package managers
 	import components.Weapon;
 	import model.WeaponVO;
 	import model.EntityVO;
+	import utils.NumUtil;
 	/**
 	 * @author taires
 	 */
@@ -23,17 +24,22 @@ package managers
 			{
 				var randWeapon:WeaponVO = getRandomWeapon(entity2);
 				
-				attack(entity1, entity2, randWeapon)
-				if(entity1.currentHealth > 0)
-				{
-					randWeapon = getRandomWeapon(entity1);
-					attack(entity2, entity1, randWeapon)
-					if(entity2.currentHealth <= 0)
-						winner = 0
-				}
-				else
-				{
-					winner = 1
+				if(randWeapon){
+					attack(entity2, entity1, randWeapon);
+					if(entity1.currentHealth > 0)
+					{
+						randWeapon = getRandomWeapon(entity1);
+						if (randWeapon)
+						{
+							attack(entity1, entity2, randWeapon);
+							if(entity2.currentHealth <= 0)
+								winner = 0
+						}
+					}
+					else
+					{
+						winner = 1
+					}
 				}
 			}
 			
@@ -65,10 +71,7 @@ package managers
 				entity.fightBarLoaded -= 33 * (weapon.weaponVO.tier	+ 1)
 				return  weapon.weaponVO;
 			}
-			else
-			{
-				return new WeaponVO();
-			}
+			return null;
 		}
 		
 		public static function attack(attacker:EntityVO, target:EntityVO, weaponVO:WeaponVO):void
@@ -76,22 +79,30 @@ package managers
 			weaponVO.skill.applySkill(attacker, target);	
 			
 			var svo:SkillVO = weaponVO.skill.skillVO;
-						
-			if (svo.damage > 0)
-			{
-				target.currentHealth -= svo.damage;
-				target.currentHealth = getCorrectedValue(target); 
+			
+			for each(var buff:ABuff in attacker.buffs){
+				buff.applyBuff()
 			}
-			if (svo.heal > 0)
-			{
-				attacker.currentHealth += svo.heal;
-				attacker.currentHealth = getCorrectedValue(attacker); 
+			
+			for each(var buff2:ABuff in target.buffs){
+				buff2.applyBuff()
 			}
+			
+			if (svo.damage > 0){
+				target.currentHealth = NumUtil.getCorrectedValue(target.totalHealth, target.currentHealth - svo.damage); 
+			}
+			if (svo.heal > 0){
+				attacker.currentHealth =  NumUtil.getCorrectedValue(attacker.totalHealth, attacker.currentHealth + svo.heal);  
+			}
+			
+			resetMultipliers(attacker);
+			resetMultipliers(target);
 		}
 		
-		static private function getCorrectedValue(e:EntityVO):int 
-		{
-			return Math.round(Math.min(e.totalHealth, Math.max(0, e.currentHealth)));
+		static private function resetMultipliers(e:EntityVO):void {
+			e.barSpeedMultiplier = 1;
+			e.attackMultiplier = 1;
+			e.weakenMultiplier = 1;
 		}
 		
 		public function updateBuffs(ent:EntityVO):void

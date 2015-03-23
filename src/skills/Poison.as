@@ -19,7 +19,7 @@ package skills {
 		
 		override public function applySkill(attacker:EntityVO, target:EntityVO):void
 		{			
-			var poisonBuff:PoisonBuff = new PoisonBuff(level);
+			var poisonBuff:PoisonBuff = new PoisonBuff(target, level);
 			target.buffs.push(poisonBuff)
 		}	
 		

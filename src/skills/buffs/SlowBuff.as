@@ -2,11 +2,11 @@ package skills.buffs {import model.EntityVO;
 	/**
 	 * @author taires
 	 */
-	public class SlowBuff extends ABuff 
+	public class SlowBuff extends ABuff implements IBadBuff
 	{		
-		public function SlowBuff(amount:Number) 
+		public function SlowBuff(e:EntityVO, amount:Number) 
 		{
-			super(amount);
+			super(e, amount);	
 		}
 		
 	/*	override protected function addEffect():void

@@ -1,4 +1,6 @@
 package skills {
+	import skills.buffs.ABuff;
+	import skills.buffs.IBadBuff;
 	import skills.buffs.PoisonBuff;
 	import skills.buffs.WeakenBuff;
 	import model.SkillVO;
@@ -20,7 +22,13 @@ package skills {
 		
 		override public function applySkill(attacker:EntityVO, target:EntityVO):void
 		{
-			attacker.buffs = [];
+			for each(var buff:ABuff in attacker.buffs)
+			{
+				if (buff is IBadBuff)
+				{
+					attacker.buffs.splice(attacker.buffs.indexOf(buff), 1);
+				}
+			}
 		}	
 		
 		override public function toString():String

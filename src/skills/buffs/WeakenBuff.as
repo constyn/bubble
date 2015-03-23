@@ -4,11 +4,11 @@ package skills.buffs {
 	/**
 	 * @author taires
 	 */
-	public class WeakenBuff extends ABuff
+	public class WeakenBuff extends ABuff implements IBadBuff
 	{
-		public function WeakenBuff(amount:Number) 
+		public function WeakenBuff(e:EntityVO, amount:Number) 
 		{
-			super(amount);			
+			super(e, amount);			
 		}
 		
 	/*	override protected function addEffect():void
